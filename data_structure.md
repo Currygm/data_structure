@@ -1,9 +1,4 @@
-<style>
-body {
-    font-family: KaiTi;
-    font-size: 18px
-}
-</style>
+<font face=STKaiti>
 
 # C++数据结构与算法
 
