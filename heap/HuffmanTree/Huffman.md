@@ -30,3 +30,30 @@
 ![示例](example1.png)
 
 其中向右的分支用`1`表示，向左的分支用`0`表示。则可以表示为`A: 01, B: 1, C: 001, D: 000`，由于每个字符都是叶子节点，因此不可能出现一个字符为另一个字符的前缀，并且实现了出现次数越多的字符二进制编码最短。由此得到的二进制编码`011100101000`是**不会产生分歧的最短二进制编码**，称之为**哈夫曼编码**，而这棵二叉树称之为**哈夫曼树**。
+实际应用：
+
+```c++
+int main () {
+    long long N, result = 0, tmp = 0;
+    cin >> N;
+    priority_queue<long long, vector<long long>, greater<long long>> q;
+    for (int i = 0; i < N; i++) {
+        cin >> tmp;
+        q.push(tmp);
+    }
+    while (!q.empty()) {
+        tmp = q.top();
+        q.pop();
+        if (!q.empty()) {
+            tmp += q.top();
+            q.pop();
+            q.push(tmp);
+            result += tmp;
+        }else {
+            break;
+        }
+    }
+    cout << result << endl;
+    return 0;
+}
+```
